@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_producto_list" model="ir.ui.view">
+        <field name="name">producto.list</field>
+        <field name="model">proyecto_odoo.producto</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="periodo_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_producto_form" model="ir.ui.view">
+        <field name="name">producto.form</field>
+        <field name="model">proyecto_odoo.producto</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name" placeholder="Nombre del Producto"/>
+                    <field name="codigo" placeholder="Codigo del Producto"/>
+                    <field name="periodo_id" placeholder="ID Periodo"/>
+                    <field name="partes_ids" widget="many2many_tags" placeholder="Parte/Partes"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para llamar a las vistas desde el menú -->
+    <record id="action_producto_list" model="ir.actions.act_window">
+        <field name="name">Productos</field>
+        <field name="res_model">proyecto_odoo.producto</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_producto_list"/>
+    </record>
+</odoo>
